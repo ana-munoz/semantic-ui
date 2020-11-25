@@ -3,7 +3,6 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-
 trigger:
 - master
 
@@ -20,8 +19,9 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+  
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    PathtoPublish: '$(Build.SourceDirectory)/build'
     ArtifactName: 'drop'
     publishLocation: 'Container'
